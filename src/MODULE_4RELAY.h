@@ -14,15 +14,15 @@ class MODULE_4RELAY {
     uint8_t _scl;
     uint8_t _sda;
     uint8_t _speed;
-    void writeReg(uint8_t data);
+    bool writeReg(uint8_t data);
     uint8_t readReg();
 
    public:
-    void begin(TwoWire* wire = &Wire, uint8_t addr = MODULE_4RELAY_ADDR,
+    bool begin(TwoWire* wire = &Wire, uint8_t addr = MODULE_4RELAY_ADDR,
                uint8_t sda = 21, uint8_t scl = 22, uint32_t speed = 200000L);
-    void setRelay(uint8_t index, bool state);
-    void setAllRelay(bool state);
-    void reverseRelay(bool state);
+    bool setRelay(uint8_t index, bool state);
+    bool setAllRelay(bool state);
+    bool reverseRelay(bool state);
     uint8_t getAllRelayState();
     bool getRelayState(uint8_t index);
 };

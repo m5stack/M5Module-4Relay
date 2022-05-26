@@ -8,7 +8,7 @@
 * 获取更多资料请访问：https://docs.m5stack.com/zh_CN/module/4relay
 *
 * describe: Module 4Relay.
-* date：2022/04/08
+* date：2022/05/26
 *******************************************************************************
 */
 
@@ -27,9 +27,7 @@ void drwaRect() {
     canvas.drawString("A REVERSE", 220, 80);
     canvas.drawString("B STEP", 220, 120);
     canvas.drawString("C RUNING", 220, 160);
-
     uint8_t state = RELAY.getAllRelayState();
-    Serial.println(state);
     for (uint8_t i = 0; i < 4; i++) {
         if (((state >> i) & 0x01) == 1) {
             canvas.fillRect(20, 50 + 50 * i, 100, 20);
@@ -43,7 +41,12 @@ void drwaRect() {
 void setup() {
     M5.begin();  // Init M5Stack.  初始化M5Stack
     // sensor.begin(&Wire, 0x57, 21, 22, 200000L);
-    RELAY.begin(&Wire, MODULE_4RELAY_ADDR, 21, 22, 200000L);
+    while (!RELAY.begin(&Wire, MODULE_4RELAY_ADDR, 21, 22, 200000L)) {
+        Serial.println("4RELAY INIT ERROR");
+        M5.Lcd.println("4RELAY INIT ERROR");
+        delay(1000);
+    };
+
     display.begin();
     canvas.setColorDepth(1);
     canvas.setFont(&fonts::Orbitron_Light_24);

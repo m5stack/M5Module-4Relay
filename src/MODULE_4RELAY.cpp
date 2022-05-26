@@ -1,20 +1,28 @@
 #include "MODULE_4RELAY.h"
 
-void MODULE_4RELAY::begin(TwoWire* wire, uint8_t addr, uint8_t sda, uint8_t scl,
+bool MODULE_4RELAY::begin(TwoWire* wire, uint8_t addr, uint8_t sda, uint8_t scl,
                           uint32_t speed) {
-    _wire  = wire;
-    _addr  = addr;
-    _sda   = sda;
-    _scl   = scl;
-    _speed = speed;
-    _wire->begin(_sda, _scl, _speed);
+    _wire = wire;
+    _addr = addr;
+    _sda  = sda;
+    _scl  = scl;
+    _wire->begin(_sda, _scl);
+    delay(10);
+    _wire->beginTransmission(_addr);
+    uint8_t error = _wire->endTransmission();
+    if (error == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-void MODULE_4RELAY::writeReg(uint8_t data) {
+bool MODULE_4RELAY::writeReg(uint8_t data) {
     _wire->beginTransmission(_addr);
     _wire->write(MODULE_4RELAY_REG);
     _wire->write(data);
-    _wire->endTransmission();
+    if (_wire->endTransmission() == 0) return true;
+    return false;
 }
 
 uint8_t MODULE_4RELAY::readReg() {
@@ -34,16 +42,16 @@ bool MODULE_4RELAY::getRelayState(uint8_t index) {
     return (stateByte >> index) & 0x01;
 }
 
-void MODULE_4RELAY::setRelay(uint8_t index, bool state) {
+bool MODULE_4RELAY::setRelay(uint8_t index, bool state) {
     uint8_t stateByte = getAllRelayState();
     if (state) {
         stateByte |= (0x01 << index);
     } else {
         stateByte &= ~(0x01 << index);
     }
-    writeReg(stateByte);
+    return writeReg(stateByte);
 }
 
-void MODULE_4RELAY::setAllRelay(bool state) {
-    writeReg(state ? 0xff : 0x00);
+bool MODULE_4RELAY::setAllRelay(bool state) {
+    return writeReg(state ? 0xff : 0x00);
 }
