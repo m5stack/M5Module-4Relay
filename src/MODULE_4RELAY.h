@@ -13,7 +13,7 @@ class MODULE_4RELAY {
     TwoWire* _wire;
     uint8_t _scl;
     uint8_t _sda;
-    uint8_t _speed;
+    uint32_t _speed;
     bool writeReg(uint8_t data);
     uint8_t readReg();
 
