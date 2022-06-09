@@ -1,18 +1,17 @@
 /*
 *******************************************************************************
 * Copyright (c) 2021 by M5Stack
-*                  Equipped with M5Core sample source code
-*                          配套  M5Core 示例源代码
-* Visit the website for more
-*information：https://docs.m5stack.com/en/module/4relay
-* 获取更多资料请访问：https://docs.m5stack.com/zh_CN/module/4relay
+*                  Equipped with M5Core2 sample source code
+*                          配套  M5Core2 示例源代码
+* Visit for more information: https://docs.m5stack.com/en/module/4relay
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/module/4relay
 *
-* describe: Module 4Relay.
-* date：2022/05/26
+* Describe: Module 4Relay.
+* Date: 2022/06/10
 *******************************************************************************
 */
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include "MODULE_4RELAY.h"
 #include <M5GFX.h>
 
@@ -39,7 +38,7 @@ void drwaRect() {
 }
 
 void setup() {
-    M5.begin(1, 1, 1, 1);  // Init M5Stack.  初始化M5Stack
+    M5.begin(true, false, true, true);  // Init M5Core2.  初始化M5Core2
     // sensor.begin(&Wire, 0x57, 21, 22, 200000L);
     while (!RELAY.begin(&Wire, MODULE_4RELAY_ADDR, 21, 22, 200000L)) {
         Serial.println("4RELAY INIT ERROR");
