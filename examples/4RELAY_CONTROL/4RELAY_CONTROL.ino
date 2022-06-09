@@ -39,7 +39,7 @@ void drwaRect() {
 }
 
 void setup() {
-    M5.begin();  // Init M5Stack.  初始化M5Stack
+    M5.begin(1, 1, 1, 1);  // Init M5Stack.  初始化M5Stack
     // sensor.begin(&Wire, 0x57, 21, 22, 200000L);
     while (!RELAY.begin(&Wire, MODULE_4RELAY_ADDR, 21, 22, 200000L)) {
         Serial.println("4RELAY INIT ERROR");
