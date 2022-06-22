@@ -39,8 +39,8 @@ void drwaRect() {
 
 void setup() {
     M5.begin(true, false, true, true);  // Init M5Core2.  初始化M5Core2
-    // sensor.begin(&Wire, 0x57, 21, 22, 200000L);
-    while (!RELAY.begin(&Wire, MODULE_4RELAY_ADDR, 21, 22, 200000L)) {
+    // sensor.begin(&Wire1, 0x57, 21, 22, 200000L);
+    while (!RELAY.begin(&Wire1, MODULE_4RELAY_ADDR, 21, 22, 200000L)) {
         Serial.println("4RELAY INIT ERROR");
         M5.Lcd.println("4RELAY INIT ERROR");
         delay(1000);
