@@ -1,3 +1,11 @@
+/*!
+ * @brief A 4-Channel Relay module From M5Stack
+ * @copyright Copyright (c) 2022 by M5Stack[https://m5stack.com]
+ *
+ * @Links [Moudle 4-Relay](https://docs.m5stack.com/en/module/4relay)
+ * @version  V0.0.1
+ * @date  2022-07-22
+ */
 #ifndef _MODULE_4RELAY_H
 #define _MODULE_4RELAY_H
 

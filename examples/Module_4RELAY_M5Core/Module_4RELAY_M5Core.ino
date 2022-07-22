@@ -7,12 +7,12 @@
 * 获取更多资料请访问: https://docs.m5stack.com/zh_CN/module/4relay
 *
 * Describe: Module 4Relay.
-* Date: 2022/06/10
+* Date: 2022/07/22
 *******************************************************************************
 */
 
 #include <M5Stack.h>
-#include "MODULE_4RELAY.h"
+#include "Module_4RELAY.h"
 #include <M5GFX.h>
 
 M5GFX display;
