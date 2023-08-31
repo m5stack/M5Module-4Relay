@@ -1,10 +1,13 @@
 # M5Module-4Relay
 
+[![Arduino Lint](https://github.com/m5stack/M5Module-4Relay/actions/workflows/Arduino-Lint-Check.yml/badge.svg)](https://github.com/m5stack/M5Module-4Relay/actions/workflows/Arduino-Lint-Check.yml)
+[![Clang Format](https://github.com/m5stack/M5Module-4Relay/actions/workflows/clang-format-check.yml/badge.svg)](https://github.com/m5stack/M5Module-4Relay/actions/workflows/clang-format-check.yml)
+
 ## Overview
 
 ### SKU:M121
 
-Contains case programs of M5Stack MODULE 4RELAY.
+Contains case programs of M5Module-4Relay MODULE 4RELAY.
 
 ## Related Link
 

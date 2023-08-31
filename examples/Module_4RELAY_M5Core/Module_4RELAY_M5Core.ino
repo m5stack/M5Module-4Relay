@@ -46,6 +46,12 @@ void setup() {
         delay(1000);
     };
 
+#ifdef MODULE_4RELAY_13_2
+    Serial.printf("raw 8bit adc: %d\r\n", RELAY.getRawADC(ADC_8BIT));
+    Serial.printf("raw 12bit adc: %d\r\n", RELAY.getRawADC(ADC_12BIT));
+    Serial.printf("voltage: %fV\r\n", RELAY.getVoltage());
+#endif
+
     display.begin();
     canvas.setColorDepth(1);
     canvas.setFont(&fonts::Orbitron_Light_24);
